@@ -18,7 +18,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
 
-      - name:
+      - name: biquery
         run: |
           bq --location=US mk \
           --dataset \
@@ -59,7 +59,7 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
 
-      - name:
+      - name: biquery
         run: |
           cat ${{ matrix.schema.file }} | \
           bq --location=US --dataset_id=${{ secrets.GCP_PROJECT_ID }}:retroactive_${{ github.sha }} query \
